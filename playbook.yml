@@ -1,0 +1,14 @@
+---
+  - hosts: all
+    become: yes
+    gather_facts: no
+    tasks:
+
+      - name: install ansible prerequisites
+        script: bootstrap.sh creates=/root/.ansible_bootstrapped
+
+  - hosts: all
+    become: yes
+    roles:
+      - lxd
+      - juju
